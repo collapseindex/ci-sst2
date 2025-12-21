@@ -59,10 +59,9 @@ Takes ~3-5 minutes on CPU.
 
 ### 3. Analyze with Collapse Index
 
-# Request evaluation from Collapse Index Labs
-# https://collapseindex.org/evals.html
-# Email: ask@collapseindex.org
-```
+Request evaluation from Collapse Index Labs
+https://collapseindex.org/evals.html
+Email: ask@collapseindex.org
 
 ## 📁 Files
 
@@ -116,3 +115,4 @@ Please also cite the original SST-2 dataset:
 ## 📧 Contact
 
 Questions? Email [ask@collapseindex.org](mailto:ask@collapseindex.org)
+
