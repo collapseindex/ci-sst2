@@ -12,7 +12,7 @@ Reproducible demonstration showing Collapse Index detects brittleness that stand
 | **AUC (CI)** | 0.698 | CI predicts flips reliably |
 | **AUC (Confidence)** | 0.515 | Confidence barely predicts flips |
 | **ΔAUC** | +0.182 | CI is 18% better than confidence |
-| **Flip Rate** | 43.4% | 217/500 base cases flip |
+| **Flip Rate** | 42.8% | 214/500 base cases flip |
 | **Dataset Size** | 2,000 rows | 500 base × 4 variants each |
 
 ## 📊 The Story
@@ -115,6 +115,7 @@ Please also cite the original SST-2 dataset:
 ## 📧 Contact
 
 Questions? Email [ask@collapseindex.org](mailto:ask@collapseindex.org)
+
 
 
 
