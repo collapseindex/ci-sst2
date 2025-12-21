@@ -24,7 +24,7 @@ Reproducible demonstration showing Collapse Index detects brittleness that stand
 
 **Why CI matters:** Confidence scores barely predict brittleness (AUC 0.515). Collapse Index catches it reliably (AUC 0.698).
 
-**🚨 Silent failures:** 35 high-confidence errors (>90% sure but wrong). These bypass confidence-based monitoring and cause real user harm.
+**🚨 Silent failures:** 13 silent failures where model >90% confident BUT CI detects collapse (CI ≤ 0.45). These bypass confidence-based monitoring and cause real user harm. (13 of 35 total high-conf errors)
 
 ## 🔬 Dataset
 
@@ -128,6 +128,7 @@ Please also cite the original SST-2 dataset:
 ## 📧 Contact
 
 Questions? Email [ask@collapseindex.org](mailto:ask@collapseindex.org)
+
 
 
 
