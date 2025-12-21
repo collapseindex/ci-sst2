@@ -73,8 +73,8 @@ This verifies metrics that don't require the full CI pipeline.
 ### 4. Analyze with Collapse Index
 
 Request evaluation from Collapse Index Labs
-https://collapseindex.org/evals.html
-Email: ask@collapseindex.org
+- https://collapseindex.org/evals.html
+- Email: ask@collapseindex.org
 
 ## 📁 Files
 
@@ -128,6 +128,7 @@ Please also cite the original SST-2 dataset:
 ## 📧 Contact
 
 Questions? Email [ask@collapseindex.org](mailto:ask@collapseindex.org)
+
 
 
 
