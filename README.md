@@ -17,7 +17,7 @@ Reproducible demonstration showing Collapse Index detects brittleness that stand
 
 ## 📊 The Story
 
-**Standard benchmarks say:** "Ship it! 93% accuracy."
+**Standard benchmarks say:** "Ship it! 90%+ accuracy."
 
 **Reality under perturbations:** Nearly half of predictions silently flip when users make typos or rephrase naturally.
 
@@ -115,6 +115,7 @@ Please also cite the original SST-2 dataset:
 ## 📧 Contact
 
 Questions? Email [ask@collapseindex.org](mailto:ask@collapseindex.org)
+
 
 
 
