@@ -60,7 +60,17 @@ This will:
 
 Takes ~3-5 minutes on CPU.
 
-### 3. Analyze with Collapse Index
+### 3. Verify Basic Metrics (Optional)
+
+Validate flip rate and accuracy independently:
+
+```bash
+python validate_metrics.py
+```
+
+This verifies metrics that don't require the full CI pipeline.
+
+### 4. Analyze with Collapse Index
 
 Request evaluation from Collapse Index Labs
 https://collapseindex.org/evals.html
@@ -118,6 +128,7 @@ Please also cite the original SST-2 dataset:
 ## 📧 Contact
 
 Questions? Email [ask@collapseindex.org](mailto:ask@collapseindex.org)
+
 
 
 
