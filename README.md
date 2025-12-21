@@ -7,7 +7,7 @@ Reproducible demonstration showing Collapse Index detects brittleness that stand
 | Metric | Value | Notes |
 |--------|-------|-------|
 | **Model** | DistilBERT-SST2 | HuggingFace public model |
-| **Benchmark Accuracy** | 93%+ | SST-2 validation set |
+| **Benchmark Accuracy** | 90%+ | SST-2 validation set |
 | **CI Score** | 0.275 | Moderate instability (0-1 scale) |
 | **AUC (CI)** | 0.698 | CI predicts flips reliably |
 | **AUC (Confidence)** | 0.515 | Confidence barely predicts flips |
@@ -115,4 +115,5 @@ Please also cite the original SST-2 dataset:
 ## 📧 Contact
 
 Questions? Email [ask@collapseindex.org](mailto:ask@collapseindex.org)
+
 
