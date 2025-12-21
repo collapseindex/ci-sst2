@@ -8,11 +8,12 @@ Reproducible demonstration showing Collapse Index detects brittleness that stand
 |--------|-------|-------|
 | **Model** | DistilBERT-SST2 | HuggingFace public model |
 | **Benchmark Accuracy** | 90%+ | SST-2 validation set |
-| **CI Score** | 0.275 | Minor Drift (0-1 scale) |
+| **CI Score** | 0.275 | Moderate instability (0-1 scale) |
 | **AUC (CI)** | 0.698 | CI predicts flips reliably |
 | **AUC (Confidence)** | 0.515 | Confidence barely predicts flips |
 | **ΔAUC** | +0.182 | CI is 18% better than confidence |
 | **Flip Rate** | 42.8% | 214/500 base cases flip |
+| **High-Conf Errors** | 35 | Model >90% confident but wrong |
 | **Dataset Size** | 2,000 rows | 500 base × 4 variants each |
 
 ## 📊 The Story
@@ -22,6 +23,8 @@ Reproducible demonstration showing Collapse Index detects brittleness that stand
 **Reality under perturbations:** Nearly half of predictions silently flip when users make typos or rephrase naturally.
 
 **Why CI matters:** Confidence scores barely predict brittleness (AUC 0.515). Collapse Index catches it reliably (AUC 0.698).
+
+**🚨 Silent failures:** 35 high-confidence errors (>90% sure but wrong). These bypass confidence-based monitoring and cause real user harm.
 
 ## 🔬 Dataset
 
@@ -115,6 +118,7 @@ Please also cite the original SST-2 dataset:
 ## 📧 Contact
 
 Questions? Email [ask@collapseindex.org](mailto:ask@collapseindex.org)
+
 
 
 
