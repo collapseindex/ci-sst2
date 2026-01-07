@@ -189,7 +189,7 @@ Please also cite the original SST-2 dataset:
 ## ⚖️ License
 
 - **This Repository (v2.0.0):** MIT License (code only)
-- **CI/SRI Methodology:** Proprietary - © 2025 Collapse Index Labs
+- **CI/SRI Methodology:** Proprietary - © 2025 Collapse Index Labs - Alex Kwon
 - **SST-2 Dataset:** Available via HuggingFace Datasets (cite original paper above)
 - **DistilBERT Model:** Apache 2.0
 
@@ -204,3 +204,4 @@ Please also cite the original SST-2 dataset:
 ## 📧 Contact
 
 Questions? Email [ask@collapseindex.org](mailto:ask@collapseindex.org)
+
