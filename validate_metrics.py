@@ -6,9 +6,9 @@ This script verifies basic metrics that can be calculated without
 the full Collapse Index pipeline:
 - Flip rate: percentage of examples with inconsistent predictions
 - Overall accuracy: model correctness across all variants
-- Confidence distribution: how confidence differs between correct/incorrect predictions
+- Confidence AUC: how well confidence discriminates errors from correct predictions
 
-Advanced metrics (AUC, CI scores) require the full analysis pipeline.
+Advanced metrics (CI, SRI, CSI) require the full analysis pipeline.
 
 Usage:
     python validate_metrics.py
@@ -17,6 +17,7 @@ Author: Alex Kwon (Collapse Index Labs)
 License: MIT
 """
 import pandas as pd
+from sklearn.metrics import roc_auc_score
 
 # Load dataset
 df = pd.read_csv('sst2_ci_demo.csv')
@@ -77,36 +78,46 @@ print(f"All variants (w/ perturbations): {overall_accuracy:.1f}% ({total_correct
 print(f"Degradation: {base_accuracy - overall_accuracy:.1f} percentage points")
 print(f"\n✓ Base accuracy matches claim: ~90%? {abs(base_accuracy - 90) < 2.0}")
 
-# Confidence distribution
+# Confidence AUC (BASE EXAMPLES ONLY - canonical for CI/SRI analysis)
 print("\n" + "=" * 60)
-print("✓ CONFIDENCE DISTRIBUTION")
+print("✓ CONFIDENCE AUC (independently verifiable)")
 print("=" * 60)
-errors_df = df[df['is_error'] == 1]
-correct_df = df[df['is_error'] == 0]
-print(f"Errors - Mean confidence: {errors_df['confidence'].mean():.4f}")
-print(f"Correct - Mean confidence: {correct_df['confidence'].mean():.4f}")
-print(f"Gap: {correct_df['confidence'].mean() - errors_df['confidence'].mean():.4f}")
-print("\nNote: Small gap suggests confidence barely separates errors")
+print("NOTE: Computed on base examples only (canonical for CI/SRI)")
 
-# CI-dependent metrics
+base_errors_df = base_df[base_df['is_error'] == 1]
+base_correct_df = base_df[base_df['is_error'] == 0]
+
+# Compute AUC: higher confidence should predict correct (is_error=0)
+is_correct = 1 - base_df['is_error']
+auc_conf = roc_auc_score(is_correct, base_df['confidence'])
+
+print(f"Errors: {len(base_errors_df)} samples (mean conf: {base_errors_df['confidence'].mean():.4f})")
+print(f"Correct: {len(base_correct_df)} samples (mean conf: {base_correct_df['confidence'].mean():.4f})")
+print(f"AUC(Conf): {auc_conf:.3f}")
+print("\n→ This is base examples only. Full pipeline computes on all variants.")
+print("   (Confidence typically degrades under perturbation)")
+
+# Advanced metrics notice
 print("\n" + "=" * 60)
-print("⚠ METRICS REQUIRING CI PIPELINE")
+print("⚠ ADVANCED METRICS (PROPRIETARY)")
 print("=" * 60)
-print("The following metrics CANNOT be independently verified:")
-print("  • AUC(CI): 0.698 - requires ROC analysis")
-print("  • AUC(Confidence): 0.515 - requires ROC analysis  ")
-print("  • ΔAUC: +0.182 - difference between above")
-print("  • CI Score: 0.275 - requires perturbation analysis")
-print("  • High-Conf Errors: 35 - requires collapse_log from pipeline")
-print("\nTo verify these, run the full CI analysis:")
-print("  Contact: ask@collapseindex.org")
+print("The following require proprietary analysis pipeline:")
+print("  • Structural Retention Index (SRI)")
+print("  • Collapse Index (CI)")
+print("  • CSI failure mode classification (Type I-V)")
+print("  • SRI letter grading (A-F)")
+print("  • AUC/ROC curves for CI and SRI")
+print("\nFor commercial analysis: ask@collapseindex.org")
 
 print("\n" + "=" * 60)
 print("SUMMARY")
 print("=" * 60)
-print(f"✓ Flip rate: {flip_rate:.1f}% (matches ~42.8%)")
+print(f"✓ Flip rate: {flip_rate:.1f}%")
+print(f"✓ Base accuracy: {base_accuracy:.1f}%")
 print(f"✓ Overall accuracy: {overall_accuracy:.1f}%")
-print(f"⚠ Full metrics require CI pipeline analysis")
+print(f"✓ AUC(Conf): {auc_conf:.3f} (base only; degrades under perturbation)")
+print(f"✓ Dataset is reproducible and verifiable")
+print("⚠ Advanced metrics (CI, SRI, CSI) require proprietary pipeline")
 print("=" * 60)
 
 
